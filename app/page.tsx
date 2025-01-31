@@ -1,101 +1,255 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import {
+  MessageSquare,
+  Settings,
+  Wand2,
+} from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
+const carouselImages = [
+  "/1.jpg",
+  "/3.png",
+  "/4.png",
+];
+
+const tools = [
+  {
+    icon: <Wand2 className="w-12 h-12" />,
+    name: "AI Translator",
+    description: "Advanced AI-powered Translator for your development needs",
+    href: "https://mfahadjbr-multilingual-translator-project-app-zykhrl.streamlit.app/"
+  },
+  {
+    icon: <MessageSquare className="w-12 h-12" />,
+    name: "Gmail Assistant",
+    description: "Advanced AI-powered Assistant for your development needs",
+    href: "https://mfahadjbr-email-responder-project-app-osur9u.streamlit.app"
+  },
+  {
+    icon: <Settings className="w-12 h-12" />,
+    name: "AI Dev Tools",
+    description: "Comprehensive suite of development tools and utilities",
+    href: "https://mfahadjbr-function-calling-assignment-app-e539fh.streamlit.app/"
+  }
+];
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    contactSection?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    toast({
+      title: "Success!",
+      description: "Your message has been sent successfully.",
+    });
+    setIsLoading(false);
+  };
+
+  return (
+    <main className="min-h-screen">
+      {/* Header */}
+      <Header />
+
+      {/* Hero Section */}
+      <section id="home" className="relative h-screen pt-16">
+        <div className="absolute inset-0">
+          {carouselImages.map((img, index) => (
+            <div
+              key={img}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentSlide ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <Image
+                src={img}
+                alt={`Slide ${index + 1}`}
+                fill
+                className="object-fill"
+                priority={index === 0}
+              />
+              <div className="absolute inset-0 bg-black/50" />
+            </div>
+          ))}
+        </div>
+
+        <div className="relative h-full flex items-center justify-center text-white">
+          <div className="text-center space-y-6 px-4">
+            <h1 className="text-5xl md:text-7xl font-bold">
+              Welcome to Agentia World
+            </h1>
+            <p className="text-xl md:text-2xl max-w-2xl mx-auto">
+              Empowering your digital journey with cutting-edge solutions
+            </p>
+            <div className="space-x-4">
+              <Link href="/about">
+                <Button
+                  size="lg"
+                  className="bg-[#cb73fa] hover:bg-[#cb73fa]/80 text-white"
+                >
+                  Learn More
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+          {carouselImages.map((_, index) => (
+            <button
+              key={index}
+              className={`w-3 h-3 rounded-full transition-colors ${
+                index === currentSlide ? "bg-[#cb73fa]" : "bg-white/50"
+              }`}
+              onClick={() => setCurrentSlide(index)}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+          ))}
+        </div>
+      </section>
+
+      {/* Tools Section */}
+      {/* Tools Section */}
+<section id="tools" className="py-20 bg-gray-50">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 className="text-4xl font-bold text-center mb-12 text-[#301c34]">
+      Our Tools
+    </h2>
+    <div className="grid md:grid-cols-3 gap-8">
+      {tools.map((tool) => (
+        <div
+          key={tool.name}
+          className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+        >
+          <div className="text-[#cb73fa] mb-4">{tool.icon}</div>
+          <h3 className="text-2xl font-bold mb-2 text-[#301c34]">
+            {tool.name}
+          </h3>
+          <p className="text-gray-600 mb-4">{tool.description}</p>
+          
+          {/* Display Link */}
+          {/* <p className="text-sm text-gray-500 font-mono break-all">
+            {tool.href}
+          </p> */}
+
+          {/* Open Link Button */}
+          <a href={tool.href} target="_blank" rel="noopener noreferrer">
+            <Button className="mt-4 w-full bg-[#cb73fa] hover:bg-[#cb73fa]/80 text-white">
+              Open Tool
+            </Button>
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      ))}
     </div>
+  </div>
+</section>
+
+
+      {/* About Section */}
+      <section id="about" className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="relative h-[400px]">
+              <Image
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
+                alt="About Agentia World"
+                fill
+                className="object-cover rounded-lg"
+              />
+            </div>
+            <div>
+              <h2 className="text-4xl font-bold mb-6 text-[#301c34]">
+                About Agentia World
+              </h2>
+              <p className="text-gray-600 mb-6">
+                At Agentia World, we're passionate about creating innovative
+                solutions that empower businesses and individuals to thrive in the
+                digital age. Our mission is to provide cutting-edge tools and
+                technologies that make complex tasks simple and efficient.
+              </p>
+              <p className="text-gray-600 mb-8">
+                With years of experience and a dedicated team of experts, we
+                continue to push the boundaries of what's possible in the world of
+                technology.
+              </p>
+              <Link href="/about">
+              <Button className="bg-[#301c34] hover:bg-[#301c34]/80 text-white">
+                Learn More
+                </Button>
+                </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form Section */}
+      <section id="contact" className="py-20 bg-gray-50">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-center mb-12 text-[#301c34]">
+            Get in Touch
+          </h2>
+          <form action={"https://formspree.io/f/myzygreg"} method="POST" className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Name
+                </label>
+                <Input required type="Name" name="name" autoComplete="off" className="w-full" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Email
+                </label>
+                <Input type="email" name="email" required autoComplete="off" className="w-full" />
+              </div>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Subject
+              </label>
+              <Input required type="Subject" name="subject" autoComplete="off" className="w-full" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Message
+              </label>
+              <Textarea required name="message" autoComplete="off" className="w-full min-h-[150px]" />
+            </div>
+            <Button
+              type="submit"
+              className="w-full bg-[#301c34] hover:bg-[#301c34]/80 text-white"
+            >
+              Send Message
+            </Button>
+          </form>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <Footer />
+    </main>
   );
 }
