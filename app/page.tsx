@@ -89,7 +89,7 @@ export default function Home() {
                 src={img}
                 alt={`Slide ${index + 1}`}
                 fill
-                className="object-fill"
+                className="object-cover"
                 priority={index === 0}
               />
               <div className="absolute inset-0 bg-black/50" />
