@@ -11,6 +11,7 @@ import {
   MessageSquare,
   Settings,
   Wand2,
+  Brain,
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -22,6 +23,12 @@ const carouselImages = [
 ];
 
 const tools = [
+  {
+    icon: <Brain className="w-12 h-12" />,
+    name: "AI Resume Application",
+    description: "Advanced AI-powered Resume for your development needs",
+    href: "https://ai-application-five.vercel.app/"
+  },
   {
     icon: <Wand2 className="w-12 h-12" />,
     name: "AI Translator",

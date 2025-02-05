@@ -8,6 +8,13 @@ import Header from "@/components/Header";
 
 const tools = [
   {
+    image: "/resume.jpg",
+    name: "AI Resume Application",
+    description: "Advanced AI-powered Resume for your development needs",
+    href: "https://ai-application-five.vercel.app/",
+    github:"https://github.com/mfahadjbr/AI_Resume_Application"
+  },
+  {
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop",
     name: "AI Translator",
     description: "Advanced AI-powered Translator for your development needs",
