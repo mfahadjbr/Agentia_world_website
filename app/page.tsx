@@ -25,9 +25,9 @@ const carouselImages = [
 const tools = [
   {
     icon: <Brain className="w-12 h-12" />,
-    name: "AI Resume Application",
+    name: "AI Resume Builder",
     description: "Advanced AI-powered Resume for your development needs",
-    href: "https://ai-application-five.vercel.app/"
+    href: "https://ai-resume-builder-three-iota.vercel.app/"
   },
   {
     icon: <Wand2 className="w-12 h-12" />,
