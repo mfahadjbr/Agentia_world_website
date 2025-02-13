@@ -8,6 +8,13 @@ import Header from "@/components/Header";
 
 const tools = [
   {
+    image: "/trip.jpg",
+    name: "AI Trip Planner",
+    description: "Advanced AI-powered Trip Planner for your development needs",
+    href: "https://mfahadjbr-ai-trip-plan-website-srcproject1main-0b1pil.streamlit.app",
+    github:"https://github.com/mfahadjbr/Ai_Trip_Plan_Website"
+  },
+  {
     image: "/resume.jpg",
     name: "AI Resume Builder",
     description: "Advanced AI-powered Resume for your development needs",

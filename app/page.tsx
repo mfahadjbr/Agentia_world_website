@@ -12,13 +12,14 @@ import {
   Settings,
   Wand2,
   Brain,
+  Plane
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const carouselImages = [
-  "/1.jpg",
   "/3.png",
+  "/1.jpg",
   "/4.png",
 ];
 
@@ -28,6 +29,12 @@ const tools = [
     name: "AI Resume Builder",
     description: "Advanced AI-powered Resume for your development needs",
     href: "https://ai-resume-builder-three-iota.vercel.app/"
+  },
+  {
+    icon: <Plane className="w-12 h-12" />,
+    name: "AI Trip Planner",
+    description: "Advanced AI-powered Trip Planner for your development needs",
+    href: "https://mfahadjbr-ai-trip-plan-website-srcproject1main-0b1pil.streamlit.app"
   },
   {
     icon: <Wand2 className="w-12 h-12" />,
