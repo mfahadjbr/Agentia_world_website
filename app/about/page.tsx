@@ -8,6 +8,13 @@ import Header from "@/components/Header";
 
 const tools = [
   {
+    image: "/book.png",
+    name: "AI Book Writer",
+    description: "Advanced AI-powered Book Writer for your development needs",
+    href: "https://mfahadjbr-ai-book-writer-srcai-book-writermain-is6myq.streamlit.app/",
+    github:"https://github.com/mfahadjbr/AI_Book_Writer"
+  },
+  {
     image: "/trip.jpg",
     name: "AI Trip Planner",
     description: "Advanced AI-powered Trip Planner for your development needs",

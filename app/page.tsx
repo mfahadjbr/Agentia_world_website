@@ -12,7 +12,8 @@ import {
   Settings,
   Wand2,
   Brain,
-  Plane
+  Plane,
+  Book
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -24,6 +25,12 @@ const carouselImages = [
 ];
 
 const tools = [
+  {
+    icon: <Book className="w-12 h-12" />,
+    name: "AI Book Writer",
+    description: "Advanced AI-powered Book Writer for your development needs",
+    href: "https://mfahadjbr-ai-book-writer-srcai-book-writermain-is6myq.streamlit.app/"
+  },
   {
     icon: <Brain className="w-12 h-12" />,
     name: "AI Resume Builder",
