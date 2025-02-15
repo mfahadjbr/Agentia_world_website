@@ -8,6 +8,20 @@ import Header from "@/components/Header";
 
 const tools = [
   {
+    image: "/customgpt.png",
+    name: "CustomGPT Agentic AI Panaversity Document",
+    description: "Advanced AI-powered Document for your development needs",
+    href: "https://mfahadjbr-agentic-ai-document-customgpt-main-eaxzoc.streamlit.app/",
+    github:"https://github.com/mfahadjbr/Agentic_AI_Document_CustomGPT"
+  },
+  {
+    image: "/wether.png",
+    name: "Wether CustomGPT",
+    description: "Advanced AI-powered Weather for your development needs",
+    href: "https://mfahadjbr-weather-customgpt-main-cso9do.streamlit.app/",
+    github:"https://github.com/mfahadjbr/Weather_CustomGPT"
+  },
+  {
     image: "/book.png",
     name: "AI Book Writer",
     description: "Advanced AI-powered Book Writer for your development needs",

@@ -13,7 +13,9 @@ import {
   Wand2,
   Brain,
   Plane,
-  Book
+  Book,
+  Cloud,
+  Bot,
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -25,6 +27,18 @@ const carouselImages = [
 ];
 
 const tools = [
+  {
+    icon: <Bot className="w-12 h-12" />,
+    name: "CustomGPT Agentic AI Panaversity Document",
+    description: "Advanced AI-powered Document for your development needs",
+    href: "https://mfahadjbr-agentic-ai-document-customgpt-main-eaxzoc.streamlit.app/"
+  },
+  {
+    icon: <Cloud className="w-12 h-12" />,
+    name: "Wether CustomGPT",
+    description: "Advanced AI-powered Weather for your development needs",
+    href: "https://mfahadjbr-weather-customgpt-main-cso9do.streamlit.app/"
+  },
   {
     icon: <Book className="w-12 h-12" />,
     name: "AI Book Writer",
