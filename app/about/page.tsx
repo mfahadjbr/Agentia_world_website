@@ -8,6 +8,13 @@ import Header from "@/components/Header";
 
 const tools = [
   {
+    image: "/image2.png",
+    name: "Medical Rag AI Application",
+    description: "Advanced AI-powered Medical Rag for your development needs",
+    href: "https://medical-rag-application.vercel.app/",
+    github:"https://github.com/mfahadjbr/Medical_Rag_Application"
+  },
+  {
     image: "/customgpt.png",
     name: "CustomGPT Agentic AI Panaversity Document",
     description: "Advanced AI-powered Document for your development needs",

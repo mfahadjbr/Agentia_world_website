@@ -16,6 +16,7 @@ import {
   Book,
   Cloud,
   Bot,
+  Stethoscope,
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -27,6 +28,12 @@ const carouselImages = [
 ];
 
 const tools = [
+  {
+    icon: <Stethoscope className="w-12 h-12" />,
+    name: "Medical Rag AI Application",
+    description: "Advanced AI-powered Medical Rag for your development needs",
+    href: "https://medical-rag-application.vercel.app/",
+  },
   {
     icon: <Bot className="w-12 h-12" />,
     name: "CustomGPT Agentic AI Panaversity Document",
