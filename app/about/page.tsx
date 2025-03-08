@@ -11,7 +11,7 @@ const tools = [
     image: "/image2.png",
     name: "Medical Rag AI Application",
     description: "Advanced AI-powered Medical Rag for your development needs",
-    href: "https://medical-rag-application.vercel.app/",
+    href: "https://medical-rag-application-1.vercel.app/",
     github:"https://github.com/mfahadjbr/Medical_Rag_Application"
   },
   {

@@ -32,7 +32,7 @@ const tools = [
     icon: <Stethoscope className="w-12 h-12" />,
     name: "Medical Rag AI Application",
     description: "Advanced AI-powered Medical Rag for your development needs",
-    href: "https://medical-rag-application.vercel.app/",
+    href: "https://medical-rag-application-1.vercel.app/",
   },
   {
     icon: <Bot className="w-12 h-12" />,
